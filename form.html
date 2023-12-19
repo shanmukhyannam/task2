@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            background-image: url(https://png.pngtree.com/background/20230703/original/pngtree-3d-rendered-abstract-concept-wallpaper-in-4k-emptiness-illustrated-picture-image_4127948.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1{
+            color: rgb(227, 97, 27);
+        }
+        .A{
+            background-color: rgb(70, 101, 129,0.5);
+            border:2px solid rgb(56, 18, 72);
+            border-radius: 1%;
+            padding: auto;
+            margin:50px 350px 50px 350px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        th{
+            background-color: rgb(255, 136, 0);
+        }
+        td{
+            background-color: rgb(123, 156, 186);
+        }  
+        label{
+            color: rgb(202, 126, 38);
+        }
+    </style>
+    <head>
+        <title>REGISTRATION FORM</title>
+    </head>
+    <body>
+        <div class="A">
+            <form>
+                <center>
+                    <h1><u>REGISTRATION FORM:</u></h1>
+                </center>
+                <center>
+                    <label for="name">NAME:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">EMAIL:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="place">PLACE:</label>
+                    <input type="place" id="place" name="place" required><br><br>
+                    <label for="date of birth">DATE OF BIRTH:</label>
+                    <input type="date" id="date" name="date" required><br><br>
+                    <input type="checkbox" id="accept-all-terms" name="accept-all-terms" required>
+                    <label for="accept-all-terms">accept all terms</label><br><br>
+                    <input type="submit" id="submit" name="submit" required>
+                </center>
+            </form><br>
+        </div>
+        <div class="A">
+            <h1><center><u><b>ENTRIES:</b></u></center></h1>
+            <center>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>PLACE</th>
+                            <th>DATE OF BIRTH</th>
+                        </tr>
+                    </thead>
+                </table>
+                <br>
+            </center>
+        </div>
+        <script>
+            var form = document.querySelector('form');
+            form.addEventListener('submit', submitForm);
+
+            function submitForm(event) {
+                event.preventDefault();
+
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var place = document.getElementById("place").value;
+                var dob = document.getElementById("date").value;
+
+                var emailInput = document.getElementById("email");
+                emailInput.addEventListener('input', function () {
+                    if (emailInput.validity.typeMismatch) {
+                        emailInput.setCustomValidity("Please enter a valid email address.");
+                    } else {
+                        emailInput.setCustomValidity("");
+                    }
+                });
+
+                var table = document.getElementById("dataTable");
+                var row = table.insertRow(-1);
+                
+                var nameCell = row.insertCell(0);
+                nameCell.innerHTML = name;
+                var emailCell = row.insertCell(1);
+                emailCell.innerHTML = email;
+                var placeCell = row.insertCell(2);
+                placeCell.innerHTML = place;
+                var dobCell = row.insertCell(3);
+                dobCell.innerHTML = dob;
+
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("place").value = "";
+                document.getElementById("date").value = "";
+        }
+        </script>
+    </body>
+</html>
